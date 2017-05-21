@@ -1,0 +1,38 @@
+[{:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/uid
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/string
+  :db/unique             :db.unique/identity
+  :db/doc                "Identification"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/brand
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/string
+  :db/doc                "Car's brand"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/model
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/string
+  :db/doc                "Car's model"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/hid
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/string
+  :db/doc                "Unique cars identification"
+  :db.install/_attribute :db.part/db}]
+
+[{:db/id                 #db/id[:db.part/db]
+  :db/ident              :action/action
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/string
+  :db/doc                "Action identification"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :action/session-id
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/string
+  :db/doc                "Session id"
+  :db.install/_attribute :db.part/db}]
