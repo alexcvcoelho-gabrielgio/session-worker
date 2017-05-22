@@ -14,6 +14,7 @@
                  [com.taoensso/carmine "2.16.0"]
                  [org.clojure/data.json "0.2.6"]
                  [com.novemberain/monger "3.1.0"]
+                 [org.clojure/core.async "0.3.442"]
                  [cprop "0.1.10"]]
   :plugins [[lein-cprop "1.0.1"]
             [lein-immutant "2.1.0"]]

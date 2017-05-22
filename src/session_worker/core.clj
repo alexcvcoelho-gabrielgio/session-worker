@@ -1,6 +1,7 @@
 (ns session-worker.core
   (:gen-class)
   (:require [ext.redis :as rd]
+            [clojure.core.async :refer [go thread]]
             [ext.router :as rt]
             [clojure.data.json :as json]))
 

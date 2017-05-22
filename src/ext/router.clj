@@ -8,13 +8,15 @@
   (let [datomic-conn (d/connect db/dev-db-uri)
         mongo-conn (mg/connect)]
     (db/save-session datomic-conn item)
-    (mo/save-session mongo-conn item)))
+    (mo/save-session mongo-conn item)
+    (mg/disconnect mongo-conn)))
 
 (defn save-warn [item]
   (let [datomic-conn (d/connect db/dev-db-uri)
         mongo-conn (mg/connect)]
     (db/save-warn datomic-conn item)
-    (mo/save-warn mongo-conn item)))
+    (mo/save-warn mongo-conn item)
+    (mg/disconnect mongo-conn)))
 
 (defn setup []
   (let [conn (d/connect db/dev-db-uri)]
