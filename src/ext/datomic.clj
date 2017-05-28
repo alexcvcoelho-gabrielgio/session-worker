@@ -1,4 +1,4 @@
-(ns ext.datomic
+  (ns ext.datomic
   (:require [cprop.core :refer [load-config]]
             [clojure.java.io :as io]
             [datomic.api :as d]

@@ -1,11 +1,12 @@
 (ns ext.mongo
   (:require [monger.core :as mg]
-            [monger.collection :as mc]))
+            [monger.collection :as mc])
+  (:import org.bson.types.ObjectId))
+
+(def dev-db-uri "mongodb://remote:remote@gabrielgio.com.br:27017/main")
 
 (defn save-session [conn se]
-  (let [db (mg/get-db conn "main")]
-    (mc/insert db "session" se)))
+  (mc/insert (:db conn) "session" (assoc se :_id (ObjectId.))))
 
 (defn save-warn [conn ac]
-  (let [db (mg/get-db conn "main")]
-    (mc/insert db "warn" ac)))
+  (mc/insert (:db conn) "warn" (assoc ac :_id (ObjectId.))))
