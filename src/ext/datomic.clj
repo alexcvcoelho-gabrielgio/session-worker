@@ -7,11 +7,11 @@
 
 (def dev-db-uri "datomic:sql://main?jdbc:mysql://gabrielgio.com.br:3306/datomic?user=remote&password=remote")
 
-(defn get-session [{:keys [uid brand model hid]}]
-  [{:session/uid   uid
+(defn get-session [{:keys [uuid brand model hd-id]}]
+  [{:session/uid   uuid
     :session/brand brand
     :session/model model
-    :session/hid   hid}])
+    :session/hd-id   hd-id}])
 
 (defn get-warn [{:keys [action session-id]}]
   [{:action/action    action

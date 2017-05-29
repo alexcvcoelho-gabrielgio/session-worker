@@ -18,7 +18,7 @@
   :db/doc                "Car's model"
   :db.install/_attribute :db.part/db}
  {:db/id                 #db/id[:db.part/db]
-  :db/ident              :session/hid
+  :db/ident              :session/hd-id
   :db/cardinality        :db.cardinality/one
   :db/valueType          :db.type/string
   :db/doc                "Unique cars identification"
