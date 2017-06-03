@@ -7,7 +7,7 @@
 (defmacro wcar* [& body] `(car/wcar {:pool {} :spec {:host "gabrielgio.com.br" :port 6379}} ~@body))
 
 (defn pop [key]
-  (wcar* (car/brpop key 0)))
+  (wcar* (car/brpop key 100)))
 
 (defn pop-session []
   (try (let [json (pop "session")]

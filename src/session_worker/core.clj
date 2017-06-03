@@ -14,8 +14,11 @@
 
 (defn loop-through []
   (loop []
+    (try
       (pull)
-      (recur)))
+      (catch Exception e
+        (-> e print)))
+    (recur)))
 
 (defn -main []
   (loop-through))
