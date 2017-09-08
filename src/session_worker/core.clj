@@ -1,25 +1,30 @@
 (ns session-worker.core
   (:gen-class)
   (:require [ext.redis :as rd]
-            [clojure.core.async :refer [go thread]]
+            [ext.source :as kf]
+            [clojure.core.async :refer [go thread chan <!!]]
             [ext.router :as rt]
-            [clojure.data.json :as json]))
+            [clojure.data.json :as json]
+            [clojure.tools.logging :as log]))
 
-(defn pull []
-  (let [item (rd/pop-session)]
-    (case (:command item)
-      "create_session" (rt/save-session item)
-      "warn" (rt/save-warn item)
-      nil)))
+(defn pull [item]
+  (println (:command item))
+  (case (:command item)
+    "create_session" (rt/save-session item)
+    "warn" (rt/save-warn item)
+    nil))
 
-(defn loop-through []
+(defn loop-through [c]
   (loop []
     (try
-      (pull)
+      (kf/pop-session-async c)
+      (doseq [i (<!! c)]
+        (pull i))
       (catch Exception e
         (-> e print)))
     (recur)))
 
-(defn -main []
-  (loop-through))
+(defn -main [& args]
+  (let [c (chan)]
+    (loop-through c)))
 

@@ -1,20 +1,16 @@
-  (ns ext.datomic
-  (:require [cprop.core :refer [load-config]]
-            [clojure.java.io :as io]
-            [datomic.api :as d]
-            [cprop.source :as source])
+(ns ext.datomic
+  (:require [clojure.java.io :as io]
+            [datomic.api :as d])
   (:import (datomic Util)))
-
-(def dev-db-uri "datomic:sql://main?jdbc:mysql://gabrielgio.com.br:3306/datomic?user=remote&password=remote")
 
 (defn get-session [{:keys [uuid brand model hd-id]}]
   [{:session/uid   uuid
     :session/brand brand
     :session/model model
-    :session/hd-id   hd-id}])
+    :session/hd-id hd-id}])
 
 (defn get-warn [{:keys [action session-id]}]
-  [{:action/action    action
+  [{:action/action     action
     :action/session-id session-id}])
 
 (def schema (io/resource "schema.edn"))
