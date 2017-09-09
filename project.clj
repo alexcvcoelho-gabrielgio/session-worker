@@ -1,5 +1,5 @@
-(defproject session-worker "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+(defproject session-worker "0.0.1"
+  :description "Session worker"
   :url "http://example.com/FIXME"
   :repositories {"my.datomic.com" {:url   "https://my.datomic.com/repo"
                                    :creds :gpg}}
