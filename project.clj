@@ -18,8 +18,7 @@
                  [com.novemberain/monger "3.1.0"]
                  [org.clojure/core.async "0.3.442"]
                  [spootnik/kinsky "0.1.16"]]
-  :plugins [[lein-environ "1.1.0"]
-            [lein-immutant "2.1.0"]]
+  :plugins [[lein-environ "1.1.0"]]
   :main ^:skip-aot session-worker.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
