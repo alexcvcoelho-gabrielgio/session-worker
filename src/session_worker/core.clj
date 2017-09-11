@@ -7,8 +7,7 @@
             [clojure.tools.logging :as log]))
 
 (defn pull [item]
-  (log/info (:command item) (:session-id item))
-  (println (:command item) " " (:session-id item))
+  (println (:command item) " " (:uuid item))
   (case (:command item)
     "create_session" (rt/save-session item)
     "warn" (rt/save-warn item)
@@ -17,6 +16,7 @@
 (defn loop-through [c]
   (loop []
     (try
+      (println "cycle")
       (kf/pop-session-async c)
       (doseq [i (<!! c)]
         (pull i))
@@ -25,6 +25,7 @@
     (recur)))
 
 (defn -main [& args]
+  (mount.core/start)
   (let [c (chan)]
     (loop-through c)))
 

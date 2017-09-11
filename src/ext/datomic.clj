@@ -1,7 +1,13 @@
 (ns ext.datomic
   (:require [clojure.java.io :as io]
-            [datomic.api :as d])
+            [datomic.api :as d]
+            [environ.core :refer [env]]
+            [mount.core :as mount])
   (:import (datomic Util)))
+
+(mount/defstate d-conn
+                :start (-> env :datomic d/connect)
+                :stop (-> d-conn .release))
 
 (defn get-session [{:keys [uuid brand model hd-id]}]
   [{:session/uid   uuid
@@ -15,8 +21,8 @@
 
 (def schema (io/resource "schema.edn"))
 
-(defn save-session [conn se]
-  (d/transact conn (get-session se)))
+(defn save-session [se]
+  (d/transact d-conn (get-session se)))
 
 (defn save-warn [conn ac]
   (d/transact conn (get-warn ac)))

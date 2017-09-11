@@ -22,7 +22,7 @@ lein run
 
 This is not the only way to setup env variables for more info check [environ](https://github.com/weavejester/environ#usage).
 
-Copyright © 2017 alexcvcoelho e gabrielgio
+Copyright © 2017 alexcvcoelho and gabrielgio
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

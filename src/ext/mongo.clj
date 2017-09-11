@@ -1,10 +1,15 @@
 (ns ext.mongo
   (:require [monger.core :as mg]
+            [environ.core :refer [env]]
             [monger.collection :as mc])
   (:import org.bson.types.ObjectId))
 
-(defn save-session [conn se]
-  (mc/insert (:db conn) "session" (assoc se :_id (ObjectId.))))
+(mount.core/defstate m-conn
+                     :start (mg/connect-via-uri (env :mongo))
+                     :stop (mg/disconnect (:conn m-conn)))
 
-(defn save-warn [conn ac]
-  (mc/insert (:db conn) "warn" (assoc ac :_id (ObjectId.))))
+(defn save-session [se]
+  (mc/insert (:db m-conn) "session" (assoc se :_id (ObjectId.))))
+
+(defn save-warn [ac]
+  (mc/insert (:db m-conn) "warn" (assoc ac :_id (ObjectId.))))
