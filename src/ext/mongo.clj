@@ -9,7 +9,7 @@
                      :stop (mg/disconnect (:conn m-conn)))
 
 (defn save-session [se]
-  (mc/insert (:db m-conn) "session" (assoc se :_id (ObjectId.))))
+  (mc/insert (:db m-conn) "session" (dissoc (assoc se :_id (ObjectId.)) :command)))
 
 (defn save-warn [ac]
   (mc/insert (:db m-conn) "warn" (assoc ac :_id (ObjectId.))))
