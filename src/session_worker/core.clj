@@ -1,6 +1,6 @@
 (ns session-worker.core
   (:gen-class)
-  (:require [ext.source :as kf]
+  (:require [ext.kafka :as kf]
             [clojure.core.async :refer [go thread chan <!!]]
             [ext.router :as rt]
             [clojure.data.json :as json]
@@ -14,15 +14,15 @@
     nil))
 
 (defn loop-through [c]
-  (loop []
+  (loop [count 0]
     (try
-      (println "cycle")
+      (println "LOOP" count)
       (kf/pop-session-async c)
       (doseq [i (<!! c)]
         (pull i))
       (catch Exception e
         (-> e print)))
-    (recur)))
+    (recur (inc count))))
 
 (defn -main [& args]
   (mount.core/start)

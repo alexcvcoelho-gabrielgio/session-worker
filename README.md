@@ -5,7 +5,7 @@ It fetches commands from kafka and then process it.
 Session-worker processes data into two databases Mongo and Datomic. 
 Mongo will have only "latest version" of the data while Datomic keeps all historic data.
 
-This is made so then the queries processes query only on mongo while all historical analysis will be executed against Datomic.
+The reading process queries only on mongo while all historical analysis will be executed against Datomic.
 
 ## Usage
 
