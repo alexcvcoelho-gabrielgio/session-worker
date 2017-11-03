@@ -2,9 +2,9 @@
   :db/ident              :session/uid
   :db/cardinality        :db.cardinality/one
   :db/valueType          :db.type/string
-  :db/unique             :db.unique/identity
+  :db/unique             :db.unique/value
   :db/doc                "Identification"
-  :db.install/_attribute :db.part/db}
+  :db.alter/_attribute :db.part/db}
  {:db/id                 #db/id[:db.part/db]
   :db/ident              :session/brand
   :db/cardinality        :db.cardinality/one
@@ -22,9 +22,41 @@
   :db/cardinality        :db.cardinality/one
   :db/valueType          :db.type/string
   :db/doc                "Unique cars identification"
-  :db.install/_attribute :db.part/db}]
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/location
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/ref
+  :db/isComponent        true
+  :db/doc                "Session current location"
+  :db.alter/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/vel
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/double
+  :db/doc                "Current car's velocity"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/gas-lvl
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/double
+  :db/doc                "Current car's gasoline level"
+  :db.install/_attribute :db.part/db}
 
-[{:db/id                 #db/id[:db.part/db]
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :location/x
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/double
+  :db/doc                "X axis location"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
+  :db/ident              :location/y
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/double
+  :db/doc                "Y axis location"
+  :db.install/_attribute :db.part/db}
+
+ {:db/id                 #db/id[:db.part/db]
   :db/ident              :action/action
   :db/cardinality        :db.cardinality/one
   :db/valueType          :db.type/string
