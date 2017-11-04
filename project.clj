@@ -10,7 +10,7 @@
                  [commons-codec "1.10"]
                  [environ "1.1.0"]
                  [mount "0.1.11"]
-                 [mysql/mysql-connector-java "5.1.6"]
+                 [com.amazonaws/aws-java-sdk-dynamodb "1.11.6"]
                  [com.datomic/datomic-pro "0.9.5561"]
                  [com.taoensso/carmine "2.16.0"]
                  [org.clojure/tools.logging "0.3.1"]
