@@ -7,7 +7,7 @@
             [clojure.tools.logging :as log]))
 
 (defn pull [item]
-  (println (:command item) " " (:uuid item))
+  (println (:command item) " " (:uuid item) " " (:lat item) " " (:long item))
   (case (:command item)
     "create_session" (rt/save-session item)
     "warn" (rt/save-warn item)

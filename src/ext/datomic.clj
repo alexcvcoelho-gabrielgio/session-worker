@@ -9,11 +9,13 @@
                 :start (-> env :datomic d/connect)
                 :stop (-> d-conn .release))
 
-(defn get-session [{:keys [uuid brand model hd-id]}]
-  [{:session/uid   uuid
-    :session/brand brand
-    :session/model model
-    :session/hd-id hd-id}])
+(defn get-session [{:keys [uuid brand model hd-id lat long]}]
+  [{:session/uid         uuid
+    :session/brand       brand
+    :session/model       model
+    :session/hd-id       hd-id
+    :session/destination #{{:location/x long
+                            :location/y lat}}}])
 
 (defn get-warn [{:keys [action session-id]}]
   [{:action/action     action

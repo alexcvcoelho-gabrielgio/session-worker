@@ -31,6 +31,13 @@
   :db/doc                "Session current location"
   :db.alter/_attribute :db.part/db}
  {:db/id                 #db/id[:db.part/db]
+  :db/ident              :session/destination
+  :db/cardinality        :db.cardinality/one
+  :db/valueType          :db.type/ref
+  :db/isComponent        true
+  :db/doc                "Session destination"
+  :db.install/_attribute :db.part/db}
+ {:db/id                 #db/id[:db.part/db]
   :db/ident              :session/vel
   :db/cardinality        :db.cardinality/one
   :db/valueType          :db.type/double
